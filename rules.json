@@ -1,0 +1,217 @@
+{
+  "version": "1.0.0",
+
+  "page": {
+    "hostname": "air.1688.com",
+    "pathname": "/app/ctf-page/trade-order-detail/index.html",
+    "requiredQuery": "orderId"
+  },
+
+  "receiver": {
+    "itemSelectors": [
+      ".order-info-receipt-content-item",
+      ".order-info-user-content-item"
+    ],
+
+    "fields": {
+      "name": {
+        "labels": [
+          "收货人"
+        ]
+      },
+
+      "mobile": {
+        "labels": [
+          "手机"
+        ]
+      },
+
+      "address": {
+        "labels": [
+          "收货地址"
+        ]
+      }
+    }
+  },
+
+  "sensitive": {
+    "fields": [
+      "name",
+      "mobile",
+      "address"
+    ],
+
+    "maskedPattern": "\\*+",
+
+    "showSelector": ".icon-eyes-open, [title=\"显示脱敏信息\"]",
+
+    "waitAfterClick": 900,
+
+    "pollInterval": 300,
+
+    "pollTimes": 10
+  },
+
+  "buyerMessage": {
+    "panelSelector": ".panel-box",
+
+    "labels": [
+      "买家留言"
+    ],
+
+    "valueSelector": ".buyer-feedback-view"
+  },
+
+  "goods": {
+    "rowSelector": "tr.table-row",
+
+    "stopLabels": [
+      "颜色",
+      "货号",
+      "尺寸",
+      "尺码",
+      "数量",
+      "单价",
+      "优惠",
+      "货品状态"
+    ],
+
+    "fields": {
+      "productNo": {
+        "labels": [
+          "货号"
+        ]
+      },
+
+      "color": {
+        "labels": [
+          "颜色"
+        ]
+      },
+
+      "size": {
+        "labels": [
+          "尺寸",
+          "尺码"
+        ]
+      },
+
+      "quantity": {
+        "selectors": [
+          "order-table-number",
+          ".order-table-number"
+        ],
+
+        "pureNumberFallback": true
+      }
+    }
+  },
+
+  "wordList": {
+    "applyTo": [
+      "color"
+    ]
+  },
+
+  "specialRules": [
+    {
+      "name": "气泵",
+
+      "field": "color",
+
+      "pattern": "气泵",
+
+      "flags": "",
+
+      "unit": "套",
+
+      "applyWordList": true,
+
+      "removeRepeatedProductNo": false,
+
+      "formats": {
+        "withSize": "{color} / {size} / {quantity}{unit}",
+        "withoutSize": "{color} / {quantity}{unit}"
+      }
+    }
+  ],
+
+  "normalRule": {
+    "unit": "个",
+
+    "applyWordList": true,
+
+    "removeRepeatedProductNo": true,
+
+    "formats": {
+      "withSize": "{productNo} / {color} / {size} / {quantity}{unit}",
+      "withoutSize": "{productNo} / {color} / {quantity}{unit}"
+    }
+  },
+
+  "sort": [
+    {
+      "field": "productNo",
+      "type": "productNo",
+      "order": "asc"
+    },
+
+    {
+      "field": "color",
+      "type": "text",
+      "order": "asc"
+    },
+
+    {
+      "field": "size",
+      "type": "natural",
+      "order": "asc"
+    },
+
+    {
+      "field": "quantity",
+      "type": "number",
+      "order": "desc"
+    }
+  ],
+
+  "output": {
+    "header": [
+      "姓名：{name}",
+      "电话：{mobile}",
+      "地址：{address}",
+      ""
+    ],
+
+    "emptyGoods": "未识别到货品信息",
+
+    "buyerMessage": {
+      "blankLineBefore": true,
+      "format": "买家留言：{buyerMessage}"
+    }
+  },
+
+  "ui": {
+    "copyButtonText": "复制发货信息",
+
+    "orderInfoTabSelector": ".tab-item",
+
+    "orderInfoTabText": "订单信息",
+
+    "orderInfoTabTitle": "点击复制发货信息"
+  },
+
+  "messages": {
+    "loading": "正在读取完整信息...",
+
+    "copied": "发货信息已复制",
+
+    "masked": "仍是脱敏信息，请先手动点眼睛后再复制",
+
+    "copyFailed": "复制失败，请看控制台",
+
+    "rulesLoadFailed": "rules.json 加载失败",
+
+    "wordListLoadFailed": "词库加载失败"
+  }
+}
