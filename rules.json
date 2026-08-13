@@ -15,21 +15,15 @@
 
     "fields": {
       "name": {
-        "labels": [
-          "收货人"
-        ]
+        "labels": ["收货人"]
       },
 
       "mobile": {
-        "labels": [
-          "手机"
-        ]
+        "labels": ["手机"]
       },
 
       "address": {
-        "labels": [
-          "收货地址"
-        ]
+        "labels": ["收货地址"]
       }
     }
   },
@@ -78,15 +72,11 @@
 
     "fields": {
       "productNo": {
-        "labels": [
-          "货号"
-        ]
+        "labels": ["货号"]
       },
 
       "color": {
-        "labels": [
-          "颜色"
-        ]
+        "labels": ["颜色"]
       },
 
       "size": {
@@ -192,7 +182,7 @@
   },
 
   "ui": {
-    "copyButtonText": "复制信息",
+    "copyButtonText": "复制发货信息",
 
     "orderInfoTabSelector": ".tab-item",
 
